@@ -1,3 +1,40 @@
+/*
+ * Programmeringsteknik med C och Matlab
+ * Fall 2018
+ * Assignment 1
+
+ * File:         ou1.c
+ * Description:  A simple implementation of a shopping assistant with a
+ *               currency converter.
+ * Author:       Mikolaj Wagner
+ * CS username:  c18mwj
+ * Date:         10/10
+ * Input:        Price of a unspecific number of items and the choice of a
+ *               specific växlingskurs.
+ * Output:       Prints the menu, prints the sum of the diffrent items bought,
+ *               and prints the sum in Swedish currency and the chosen currency.
+ * Limitations:  No validation of input.
+
+1.Så länge användaren inte valt att av sluta programmet, upprepa följande:
+
+1.1. Skriv ut menyn och läs in val
+
+1.2. Om valet är att sätta valutakurs
+1.2.1. Sätt valutakurs
+
+1.3. Om valet är att läsa in priser
+1.3.1. Så länge användaren inte vill avsluta inmatningen
+  1.3.1.1. Efterfråga pris eller klar med inmatning, samt om det är ett giltigt pris
+  1.3.1.2. Uppdatera summan
+
+1.3.2. Skriv ut summan i lokal valuta och i svenska kronor
+
+1.4. Om ogiltigt val
+1.4.1. Skriv ut att det var ett ogiltigt val
+
+2. Avsluta programmet
+
+*/
 #include <stdio.h>
 
 int main()
@@ -26,8 +63,11 @@ int main()
           break;
 
           case 2:
+              do
+              {
               printf("\nGive price (finish with < 0): ");
               scanf("%lf", &goods);
+            } while ( goods > 0);
           break;
 
 
