@@ -10,7 +10,7 @@
  * CS username:  c18mwj
  * Date:         10/10
  * Input:        Price of a unspecific number of items and the choice of a
- *               specific växlingskurs.
+ *               specific exchange rate.
  * Output:       Prints the menu, prints the sum of the diffrent items bought,
  *               and prints the sum in Swedish currency and the chosen currency.
  * Limitations:  No validation of input.
@@ -40,8 +40,7 @@
 int main()
 {
     int choice;
-    double exRate, goods;
-    exRate = 1;
+    double exRate = 1, goods = 0, sum = 0;
 
         printf("\nYour shopping assistant\n\n");
 
@@ -62,12 +61,20 @@ int main()
               scanf("%lf", &exRate);
           break;
 
-          case 2:
+          case 2: 
+              printf("\n");  
               do
               {
-              printf("\nGive price (finish with < 0): ");
+              printf("Give price (finish with < 0): ");
               scanf("%lf", &goods);
-            } while ( goods > 0);
+              if (goods > 0)
+              {
+              sum = sum + goods;
+              }
+            } 
+            while ( goods > 0);
+            printf("Sum in foreign currency: %.2lf\n", sum); 
+            printf("Sum in SEK: %.2lf\n", sum * exRate);
           break;
 
 
