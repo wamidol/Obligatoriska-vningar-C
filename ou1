@@ -16,7 +16,6 @@
  * Limitations:  No validation of input. 
  */
 
-/********* (skas tas bort) Fråga om lite saker imorgon hur man gör att när man skriver en bokstav att allt inte blir fel och justera och se efter hur fint det ska se ut*/
 
 
 #include <stdio.h>
@@ -27,12 +26,12 @@ int main()
     double exRate = 1, goods = 0, sum = 0;
 
     /*Titel*/
-    printf("\nYour shopping assistant\n\n");
+    printf("Your shopping assistant\n");
 
-    /*Repeating the menubar showing up*/
+    /*Repeating the menubar showing up after every case*/
     do
     {
-        /*Menu of the diffrent choice the user can make*/
+        /*Menu of the diffrent choices the user can make*/
         printf("\n1. Set exchange rate in SEK (current rate: %.2lf)\n", exRate);
         printf("2. Read prices in the foreign currency\n");
         printf("3. End\n\n");
@@ -48,19 +47,20 @@ int main()
                 scanf("%lf", &exRate);
             break;
 
-            case 2:     /*Letting user add items last item under 0 to end, thought the sum doesnt go back to zero everthing will add upp to the old value if he doesnt terminate the program.*/
-                printf("\n");  
+            case 2:     /*Letting user add items if no more items end it with a number under 0*/
+                sum = 0;           /*Updating sum*/
+                printf("\n");
                 do
                 {
-                printf("Give price (finish with < 0): ");       
+                printf("Give price (finish with < 0): ");
                 scanf("%lf", &goods);
-                if (goods > 0)     /*Adding all positive values for sum together*/
+                if (goods >= 0)     /*Adding all positive values for sum together*/
                 {
                 sum = sum + goods;
                 }
-                } 
-                while ( goods > 0);
-                printf("Sum in foreign currency: %.2lf\n", sum);     /*Printing out the sum in foreign currency and Swedish currency*/
+                }
+                while ( goods >= 0);
+                printf("\nSum in foreign currency: %.2lf\n", sum);     /*Printing out the sum in foreign currency and Swedish currency*/
                 printf("Sum in SEK: %.2lf\n", sum * exRate);
                 break;
 
