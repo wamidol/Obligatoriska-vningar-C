@@ -62,7 +62,7 @@ int main()
                 while ( goods >= 0);
                 printf("\nSum in foreign currency: %.2lf\n", sum);     /*Printing out the sum in foreign currency and Swedish currency*/
                 printf("Sum in SEK: %.2lf\n", sum * exRate);
-                break;
+              break;
 
 
               case 3:     /*Terminate the program*/
