@@ -1,0 +1,103 @@
+/*
+ * Programmeringsteknik med C och Matlab
+ * Fall 2018
+ * Assignment 1
+ * File:         ou1.c
+ * Description:  A simple implementation of a shopping assistant with a
+ *               currency converter.
+ * Author:       Mikolaj Wagner
+ * CS username:  c18mwj
+ * Date:         10/10
+ * Input:        How many judges are scoring the competitor(s) minimum of 3
+ *               judges and a max of 10. The scores given by the judges.
+ * Output:       Prints the info of the program, number of judges and also the
+ *               input values of every judge score. Then a final score is
+ *               presented with the highest and lowest score then prints out an
+ *               average of the points but not adding the largest or the lowest score.
+ * Limitations:  No validation of input.
+
+ 1. Skriv ut information
+ 2. Läs in antal domare
+ 3. Läs in domarpoäng
+ 4. Skriv ut de inlästa domarpoängen
+ 5. Räkna fram resultat
+ 6. Skriv ut resultat
+
+Program information
+The program reads in the number of judges and the score from each judge.
+Then it calculates the average score without regard to the lowest and highest judge score.
+Finally it prints the results (the highest, the  lowest and the final average score).
+
+Number of judges (min 3 and max 10 judges)?
+
+Score from judge 1? -oädndligt?
+
+Loaded scores:
+Judge 1:
+Jugde 2: osv
+
+Final result:
+Highest judge score:
+Lowest judge score:
+Final average score:
+*/
+#include <stdio.h>
+
+void printInfo (void);
+int
+
+int main(void)
+{
+
+int numbJudge;
+float arrayJudge[10];
+int i;
+
+  /*Måste man skriva printf hela tiden? Print out info*/
+printInfo ();
+
+//Reads in number of judges, untill correct input number
+do
+{
+  printf("Number of judges (min 3 and max 10 judges)? ");
+  scanf("%d", &numbJudge);
+
+} while(numbJudge < 3 || numbJudge > 10);
+
+printf("\n");
+
+//Reads in score of each judge
+for (i = 0; i < numbJudge;i = i + 1)
+{
+printf("Score from judge %d? ", i + 1);
+scanf("%f", &arrayJudge[i]);
+}
+
+printf("\n");
+
+printf("Loaded scores:\n");
+printf("Judge %d: %f", ;
+
+return 0;
+
+}
+
+void printInfo ()
+{
+  printf("Program information\n"
+  "The program reads in the number of judges and the score from each judge.\n"
+  "Then it calculates the average score without regard to the lowest and \n highest judge score."
+  "Finally it prints the results (the highest, the\nlowest and the final average score).\n\n");
+}
+
+
+int 
+
+do
+{
+  printf("Number of judges (min 3 and max 10 judges)? ");
+  scanf("%d", &numbJudge);
+
+} while(numbJudge < 3 || numbJudge > 10);
+
+printf("\n");
