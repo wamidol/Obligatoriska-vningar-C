@@ -16,19 +16,13 @@
  *               average of the points but not adding the largest or the lowest score.
  * Limitations:  No validation of input.
 
- 1. Skriv ut information
- 2. Läs in antal domare
- 3. Läs in domarpoäng
- 4. Skriv ut de inlästa domarpoängen
- 5. Räkna fram resultat
- 6. Skriv ut resultat
-
-Program information
-The program reads in the number of judges and the score from each judge.
-Then it calculates the average score without regard to the lowest and highest judge score.
-Finally it prints the results (the highest, the  lowest and the final average score).
-
-Number of judges (min 3 and max 10 judges)?
+Funktionaliteten i respektive steg i nedanstående algoritm ska ske i funktioner, minst en funktion för varje steg. 
+ 
+ 3. Funktion kvar att komma påRead Judge Scores
+ 4. Printout the read judge scores
+ 5. Calculate the result (Funktion användas där högsta, lägsta och medelpoäng ”returneras” via tre separata pekarparametrar.) 
+ https://www.tutorialspoint.com/cprogramming/c_function_call_by_reference.htm
+ 6. Print out the result
 
 Score from judge 1? -oädndligt?
 
@@ -44,7 +38,8 @@ Final average score:
 #include <stdio.h>
 
 void printInfo (void);
-int
+int readNumbJudges (void);
+
 
 int main(void)
 {
@@ -53,16 +48,12 @@ int numbJudge;
 float arrayJudge[10];
 int i;
 
-  /*Måste man skriva printf hela tiden? Print out info*/
+
+  //Print out information of the program
 printInfo ();
 
 //Reads in number of judges, untill correct input number
-do
-{
-  printf("Number of judges (min 3 and max 10 judges)? ");
-  scanf("%d", &numbJudge);
-
-} while(numbJudge < 3 || numbJudge > 10);
+numbJudge = readNumbJudges ();
 
 printf("\n");
 
@@ -76,7 +67,6 @@ scanf("%f", &arrayJudge[i]);
 printf("\n");
 
 printf("Loaded scores:\n");
-printf("Judge %d: %f", ;
 
 return 0;
 
@@ -86,18 +76,19 @@ void printInfo ()
 {
   printf("Program information\n"
   "The program reads in the number of judges and the score from each judge.\n"
-  "Then it calculates the average score without regard to the lowest and \n highest judge score."
-  "Finally it prints the results (the highest, the\nlowest and the final average score).\n\n");
+  "Then it calculates the average score without regard to the lowest and\nhighest judge score."
+  " Finally it prints the results (the highest, the\nlowest and the final average score).\n\n");
 }
 
-
-int 
-
-do
+int readNumbJudges (void) 
 {
+  int numbJudge;
+  
+  do {
   printf("Number of judges (min 3 and max 10 judges)? ");
   scanf("%d", &numbJudge);
 
-} while(numbJudge < 3 || numbJudge > 10);
+  } while (numbJudge < 3 || numbJudge > 10);
+  return numbJudge;
 
-printf("\n");
+}
