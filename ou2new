@@ -37,36 +37,29 @@ Final average score:
 */
 #include <stdio.h>
 
+
 void printInfo (void);
 int readNumbJudges (void);
-
-
+void readScoreJudges( int numbJudge, float array[]);
+void printScoreJudges(int numbJudge, float array[]);
 int main(void)
 {
-
+const int size = 10;
+float array[size];
 int numbJudge;
-float arrayJudge[10];
-int i;
 
-
-  //Print out information of the program
+//Print out information of the program
 printInfo ();
 
 //Reads in number of judges, untill correct input number
 numbJudge = readNumbJudges ();
-
 printf("\n");
-
 //Reads in score of each judge
-for (i = 0; i < numbJudge;i = i + 1)
-{
-printf("Score from judge %d? ", i + 1);
-scanf("%f", &arrayJudge[i]);
-}
-
+readScoreJudges( numbJudge, array);
 printf("\n");
-
-printf("Loaded scores:\n");
+printScoreJudges (numbJudge, array);
+printf("\n");
+printf("Final result:\n");
 
 return 0;
 
@@ -80,15 +73,27 @@ void printInfo ()
   " Finally it prints the results (the highest, the\nlowest and the final average score).\n\n");
 }
 
-int readNumbJudges (void) 
+int readNumbJudges (void)
 {
   int numbJudge;
-  
+
   do {
   printf("Number of judges (min 3 and max 10 judges)? ");
   scanf("%d", &numbJudge);
 
   } while (numbJudge < 3 || numbJudge > 10);
   return numbJudge;
+}
 
+void readScoreJudges (int numbJudge,float array[]) {
+for (int i = 0; i < numbJudge; i++) {
+printf("Score from judge %d? ", i+1);
+scanf("%f", &array[i]);
+}
+}
+void printScoreJudges (int numbJudge,float array[]) {
+  printf("Loaded scores:\n");
+  for (int i = 0; i < numbJudge; i++){
+  printf("Judge %d: %.1f\n", i + 1, array[i]);
+  }
 }
