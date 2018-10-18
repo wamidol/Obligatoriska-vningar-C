@@ -122,7 +122,8 @@ void getResult(float *max, float *min, float *average, float array[], int numbJu
         }
         *average += array[i];
     }
-    *average -= (*max + *min)/(numbJudge - 2);
+    *average -= (*max + *min);
+    *average /= (numbJudge - 2);
 }
 
 void printResult (float *max, float *min, float *average)
