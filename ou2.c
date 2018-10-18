@@ -46,7 +46,6 @@ int main(void)
     printScoreJudges (numbJudge, array);
     printf("\n");
     getResult (&max, &min, &average, array, numbJudge);
-    printf("\n");
     printResult (&max, &min, &average);
 
     return 0;
@@ -70,7 +69,7 @@ void printInfo ()
 /*
 This function prints out the read "right" number of judges (between 3 and 10).
 Input: Number of judges.
-Output: 
+Output:
 */
 int readNumbJudges (void)
 {
@@ -131,5 +130,5 @@ void printResult (float *max, float *min, float *average)
     printf("Final result:\n"
     "Highest judge score: %.1f\n"
     "Lowest judge score: %.1f\n"
-    "Final average score: %.1f\n", *max, *min, *average);
+    "Final average score: %.1f\n\n", *max, *min, *average);
 }
