@@ -14,6 +14,20 @@
  * Limitations:  No validation of input.
  */
 
+/*
+1. Initialisering av världen
+2. Så länge användaren inte valt att avsluta
+2.1. Skriv ut världen
+2.2. Skriv ut menyn
+2.3. Läs in användarens val
+2.4. Om nytt steg
+2.4.1.Uppdatera världen en generation
+
+Programmet ska använda sig av funktioner (dvs fler än de ovan nämnda) och den
+givna egendefinierade datastrukturen cell.
+*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -21,6 +35,7 @@
 /* Constants, representation of states */
 #define ALIVE 'X'
 #define DEAD '.'
+#define WORLD 20
 
 /* Declaration of data structure */
 typedef struct{
@@ -134,6 +149,18 @@ void loadSemaphore(const int rows, const int cols, cell field[rows][cols]) {
 
 void loadRandom(const int rows, const int cols, cell field[rows][cols]) {
 
+    srand(time(NULL));
+    for (int r = 0; r < WORLD; r = r + 1){
+        for (int c = 0; c < WORLD; c = c + 1){
+            int value = rand() % 2; 
+            if (value == 0){
+                field[r][c].current = DEAD;
+            }
+            else{
+                field[r][c].current = ALIVE;
+            }
+        }
+    }
 }
 
 
