@@ -188,14 +188,16 @@ void top_element_stack()
         s=stack_push(s,i);
     }
     for (int i=99; i>=0; i--) {
-        int *val=stack_top(s);
-        if (*val!= i) {
+        int *i=malloc(sizeof(*i));
+        s=stack_push(s,i);
+        int *val = stack_top(s);
+        if (*val != *i) {
             //Write error message
-            fprintf(stderr, "FAIL: Expected %d in stuck got %d.\n", i, *val);
+            fprintf(stderr, "FAIL: Expected the same values.\n");
             // Exit with error message
             exit(EXIT_FAILURE);
         }
-        s=stack_pop(s);
+        s = stack_pop(s);
         // Free value
         free(val);
     }
