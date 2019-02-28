@@ -99,8 +99,8 @@ void value_remove_test()
         *v = i;
         // Push value on stack.
         s = stack_push(s, v);
-    }
 
+    }
     // Push one more value and allocate it
     int *k = malloc(sizeof(*k));
     // Set value
@@ -111,10 +111,8 @@ void value_remove_test()
 
     // Pop one more element from stack
     s=stack_pop(s);
-    // Free value
-    free(k);
 
-    // Verifie that the correctvalue is on top of stack.
+    // Verifies that the correct value is on top of stack.
     int *val = stack_top(s);
     //
     if(*val!=1){
@@ -122,6 +120,7 @@ void value_remove_test()
         fprintf(stderr, "FAIL: Expected %d first in stuck got %d.\n", 1, *val);
         // Exit with error message
         exit(EXIT_FAILURE);
+        free(val);
     }
 
     // Empty the list.
@@ -135,6 +134,10 @@ void value_remove_test()
     }
     // Deallocate the stack structure.
     stack_kill(s);
+    // Free value
+    free(k);
+
+
 
 }
 /*
@@ -147,7 +150,7 @@ void value_top_test()
     stack *s=stack_empty(NULL);
     // Create one element
     int *v=malloc(sizeof(*v));
-    // Set vallue.
+    // Set value.
     *v=4;
     // Push value on stack.
     s=stack_push(s,v);
@@ -159,6 +162,7 @@ void value_top_test()
         fprintf(stderr, "FAIL: Expected %d first in stack, got %d.\n", 4, *val);
         // Exit with error message.
         exit(EXIT_FAILURE);
+        free(val);
     }
     // Empty the list.
     while (!stack_is_empty(s)) {
@@ -167,7 +171,6 @@ void value_top_test()
         // Pop element from stack.
         s=stack_pop(s);
         // Free value
-        free(val);
         free(v);
     }
     // Finally, destroy the bare stack.
@@ -186,16 +189,19 @@ void top_element_stack()
     for (int i=0; i<=99; i++) {
         int *i=malloc(sizeof(*i));
         s=stack_push(s,i);
+        free(i);
     }
     for (int i=99; i>=0; i--) {
         int *i=malloc(sizeof(*i));
         s=stack_push(s,i);
         int *val = stack_top(s);
+
         if (*val != *i) {
             //Write error message
             fprintf(stderr, "FAIL: Expected the same values.\n");
             // Exit with error message
             exit(EXIT_FAILURE);
+            free(i);
         }
         s = stack_pop(s);
         // Free value
