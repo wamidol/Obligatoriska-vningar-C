@@ -8,6 +8,7 @@
  *   2019-02-11: v1.0. first public version.
  *   2019-02-12: v1.1. all tests added (the next version need upgrade of some of the tests).
  *   2019-02-25: v2.0
+ *   2019-02-28: v2.1 fixed all function to be correct.
  */
 
 
@@ -101,23 +102,24 @@ void value_remove_test()
     }
 
     // Push one more value and allocate it
-    int *v = malloc(sizeof(*v));
+    int *k = malloc(sizeof(*k));
     // Set value
-    *v=3;
+    *k=3;
+    s=stack_push(s,k);
     // Pop element from stack
-    s=stack_pop(s,v);
-    // Free value
-    free(v);
+    s=stack_pop(s);
 
     // Pop one more element from stack
-    s =stack_pop(s,v);
+    s=stack_pop(s);
     // Free value
-    free(v);
+    free(k);
 
-    int *stack_top(v);
-    if(*stack_top!=1){
-        //Write error message
-        frprintf(stderr, "FAIL: Expected %d first in stuck got.\n",1, *stack_top);
+    // Verifie that the correctvalue is on top of stack.
+    int *val = stack_top(s);
+    //
+    if(*val!=1){
+        // Write error message
+        fprintf(stderr, "FAIL: Expected %d first in stuck got %d.\n", 1, *val);
         // Exit with error message
         exit(EXIT_FAILURE);
     }
@@ -139,7 +141,8 @@ void value_remove_test()
  * Verifies that if we insert a value to the stack it will result into that the value will get at the top of the stack.
  * Prints an error message to stderr and exits via exit() with an error signal if the test fails.
  */
-void value_top_test() {
+void value_top_test()
+{
     // Create the stack
     stack *s=stack_empty(NULL);
     // Create one element
@@ -150,10 +153,10 @@ void value_top_test() {
     s=stack_push(s,v);
 
     // Verify that value 4 is gonna be on top of stack.
-    int *stack_top(v);
-    if (*stack_top!=4) {
+    int *val=stack_top(s);
+    if (*val!=4) {
         // Write error message to stderr.
-        fprintf(stderr, "FAIL: Expected %d first in stack, got %d stack.\n", 4, *stack_top);
+        fprintf(stderr, "FAIL: Expected %d first in stack, got %d.\n", 4, *val);
         // Exit with error message.
         exit(EXIT_FAILURE);
     }
@@ -164,41 +167,42 @@ void value_top_test() {
         // Pop element from stack.
         s=stack_pop(s);
         // Free value
+        free(val);
         free(v);
     }
     // Finally, destroy the bare stack.
-    stack_kills(s);
+    stack_kill(s);
 }
 /*
  * Verifies that if we take the top element from a stack that is not empty and put it on the rest of the stack we get
  * the stack we began with.
  */
 
-void top_element_stack() {
-
+void top_element_stack()
+{
     // Create the stack.
-    stack s*=stack_empty(NULL);
+    stack *s=stack_empty(NULL);
 
     for (int i=0; i<=99; i++) {
-        s = stack_push(s, v);
+        int *i=malloc(sizeof(*i));
+        s=stack_push(s,i);
     }
-    for (int i=99; i<=0; i--) {
-
-        if (stack_top(s) != i) {
+    for (int i=99; i>=0; i--) {
+        int *val=stack_top(s);
+        if (*val!= i) {
             //Write error message
-            frprintf(stderr, "FAIL: Expected %d first in stuck got.\n", 1, *stack_top);
+            fprintf(stderr, "FAIL: Expected %d in stuck got %d.\n", i, *val);
             // Exit with error message
             exit(EXIT_FAILURE);
         }
-        s = stack_pop(s);
+        s=stack_pop(s);
+        // Free value
+        free(val);
     }
-
-        // Verify that the element
-        s=stack_push(stack_pop(s), stack_top(s))
-
-        utan skriv anropet till stack_top(s) på en egen rad. gör en funktion som lägger in värden 1-9 9-1
-    }
+    // Finally, destroy the stack
+    stack_kill(s);
 }
+
 
 
 int main (void)
@@ -221,4 +225,3 @@ int main (void)
     fprintf(stderr,"SUCCESS: Implementation passed all tests. Normal exit.\n");
     return 0;
 }
-
